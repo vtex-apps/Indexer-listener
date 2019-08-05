@@ -1,0 +1,24 @@
+{
+  "memory": 256,
+  "ttl": 10,
+  "timeout": 2,
+  "minReplicas": 2,
+  "maxReplicas": 4,
+  "routes": {
+    "status": {
+      "path": "/_v/public/listener",
+      "public": true
+    },
+    "settings":{
+      "path": "/settings",
+      "public": false,
+      "policies": [{
+        "effect": "allow",
+        "actions": ["get"],
+        "principals": [
+          "vrn:apps:*:*:*:app/vtex.broadcaster-listenery@0.*"
+        ]
+      }]
+    }
+  }
+}
